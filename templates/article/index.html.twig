@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+            {% block header %}
+            {{ parent() }}
+            {% endblock %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h3>Homepage ✅</h3>
+    {% if suppression is defined %}
+        <p>Suppression de {{suppression}}, id n°{{id}}</p>
+        <a href="article">Home</a>
+    {% else %}
+    {% for art in articles %}
+
+    <form action="delete" method="post"> 
+    <div class="container"> 
+        <button type="submit">Delete</button> 
+            <label for="id">{{art.getId}} : </label>
+            <label for="libelle"><b> {{art.getLibelle}}</b></label> 
+        <input value="{{art.getId}}" name="id" type="hidden"> </div> 
+    </form>
+
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

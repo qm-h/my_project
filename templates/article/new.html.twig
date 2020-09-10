@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+        {% block title %}Creer un article{% endblock %}
+
+{% block body %}
+{% block header %}
+            {{ parent() }}
+            {% endblock %}
+<div class="example-wrapper">
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+{% if msg !="" %}
+
+                <p>{{msg}}</p>
+
+{% elseif articles != "" %}  
+
+        <p>{{ articles }} a bien été créer et appartient a la catégorie {{ categorie.getNom }}</p>
+        <a href="article">Home</a>
+{% else %}
+        <div class="example-wrapper">
+    
+            
+                {{ form(form) }}
+
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
